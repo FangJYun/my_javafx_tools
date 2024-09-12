@@ -1,10 +1,14 @@
-package com.example.tablename;
+package com.example.selinuim.controller.home;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class HelloController {
+/**
+ * @apiNote  首页控制器
+ * @author fangjy
+ */
+public class TableNameController {
 
     @FXML
     private Label userRechargeTable;

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.selinuim.controller.home.HomeController">
+  <top>
+    <MenuBar>
+      <Menu text="文件">
+        <MenuItem text="打开" onAction="#handleOpen"/>
+        <MenuItem text="退出" onAction="#handleExit"/>
+      </Menu>
+      <Menu text="工具">
+        <Menu text="自动化脚本">
+          <MenuItem text="页面处理测试"/>
+        </Menu>
+        <MenuItem text="查表索引"/>
+      </Menu>
+    </MenuBar>
+  </top>
+  <center>
+    <Label text="这是主要内容区域" />
+  </center>
+</BorderPane>
