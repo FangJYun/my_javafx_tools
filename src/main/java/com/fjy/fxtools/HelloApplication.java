@@ -1,6 +1,6 @@
-package com.example.selinuim;
+package com.fjy.fxtools;
 
-import com.example.selinuim.fxmlview.HomeView;
+import com.fjy.fxtools.fxmlview.IndexView;
 import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;
 import de.felixroske.jfxsupport.SplashScreen;
 import javafx.stage.Stage;
@@ -22,7 +22,7 @@ public class HelloApplication extends AbstractJavaFxApplicationSupport {
                 return "/images/javafx.png";
             }
         };
-        launch(HelloApplication.class, HomeView.class, splashScreen, args);
+        launch(HelloApplication.class, IndexView.class, splashScreen, args);
     }
 
     @Override
@@ -30,9 +30,6 @@ public class HelloApplication extends AbstractJavaFxApplicationSupport {
         stage.setTitle("fjy小工具");
         stage.setWidth(900);
         stage.setHeight(600);
-//        Scene scene = new Scene(fxmlLoader.load(), 900, 600);
-//        stage.setScene(scene);
-
     }
 
 }

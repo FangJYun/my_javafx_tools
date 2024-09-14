@@ -1,4 +1,4 @@
-package com.example.selinuim.fxmlview;
+package com.fjy.fxtools.fxmlview;
 
 import de.felixroske.jfxsupport.AbstractFxmlView;
 import de.felixroske.jfxsupport.FXMLView;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Scope;
  * @author : fangjy
  */
 @Scope("prototype")
-@FXMLView(value = "/com/example/selinuim/home/home-view.fxml")
-public class HomeView extends AbstractFxmlView {
+@FXMLView(value = "/com/fjy/fxtools/index-view.fxml")
+public class IndexView extends AbstractFxmlView {
 
 }

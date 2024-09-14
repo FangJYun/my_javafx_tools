@@ -6,7 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.selinuim.controller.home.HomeController">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fjy.fxtools.controller.IndexController">
   <top>
     <MenuBar>
       <Menu text="文件">

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="OFF">
+    <properties>
+        <!--定义变量,亦可以调用系统变量,比如${env:TESTLOG}/test/logs,其中TESTLOG是自己添加的系统环境变量  -->
+        <property name="LOG_HOME">logs</property>
+        <property name="LOG_PATTERN">%d{yyyy.MM.dd 'at' HH:mm:ss z} %-5level %class{36} %M() @%L - %msg%n</property>
+        <!--        <property name="LOG_PATTERN_WEB">%d{yyyy.MM.dd 'at' HH:mm:ss z} %-5level %class{36} %M() @%L -%X{action}-nishuosha-%X{id} - %msg%n</property>-->
+        <property name="LOG_PATTERN_WEB">
+            %SK{logId}$$%d{yyyy-MM-dd HH:mm:ss.SSS}$$%SK{ip}$$%SK{hostName}$$%SK{userId}$$#{APP_ID}$$%SK{moudle}$$%SK{app_name}$$%SK{action}$$%-5level$$%class{36} %M() @%L - %msg%n
+        </property>
+        <!--日志保留天数-->
+        <property name="LOG_AGE">${sys:log.age:-7d}</property>
+        <!--单位时间生成的最大文件数-->
+        <property name="LOG_FILECOUNT">${sys:log.filecount:-10}</property>
+        <!--单个文件的大小-->
+        <property name="LOG_FILESIZE">${sys:log.filesize:-50MB}</property>
+    </properties>
+
+
+    <Appenders>
+        <Console name="SYSOUT" target="SYSTEM_OUT">
+            <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_PATTERN_WEB}"/>
+        </Console>
+
+        <!-- File 也通过ThresholdFilter的方式输出到日志，当然了append=”false” 会在服务每次启动的时候清空日志(覆盖)  -->
+        <RollingFile name="ErrorFile" fileName="${LOG_HOME}/error.log"
+                filePattern="${LOG_HOME}/$${date:yyyy-MM-dd}/WebError-%d{yyyy-MM-dd-HH}-%i.log.gz">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_PATTERN_WEB}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <!--达到预设的大小时生成压缩文件-->
+                <SizeBasedTriggeringPolicy size="${LOG_FILESIZE}"/>
+            </Policies>
+            <!-- 最多备份30天以内的日志，此处为策略限制，Delete中可以按自己需要用正则表达式编写 -->
+            <DefaultRolloverStrategy max="${LOG_FILECOUNT}">
+                <Delete basePath="${LOG_HOME}" maxDepth="2">
+                    <IfFileName glob="*/WebError-*.log.gz"/>
+                    <IfLastModified age="${LOG_AGE}"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+
+        <!--这个会打印出所有的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
+        <RollingFile name="RollingFile" fileName="${LOG_HOME}/info.log"
+                filePattern="${LOG_HOME}/$${date:yyyy-MM-dd}/WebInfo-%d{yyyy-MM-dd-HH}-%i.log.gz">
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_PATTERN_WEB}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <!--达到预设的大小时生成压缩文件-->
+                <SizeBasedTriggeringPolicy size="${LOG_FILESIZE}"/>
+            </Policies>
+            <!-- 最多备份30天以内的日志，此处为策略限制，Delete中可以按自己需要用正则表达式编写 -->
+            <DefaultRolloverStrategy max="${LOG_FILECOUNT}">
+                <Delete basePath="${LOG_HOME}" maxDepth="2">
+                    <IfFileName glob="*/WebInfo-*.log.gz"/>
+                    <IfLastModified age="${LOG_AGE}"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+        <!--指定项目代码日志级别-->
+        <logger name="io.lettuce.core.protocol" level="ERROR"/>
+        <!--        <logger name="org.apache.ibatis" level="DEBUG"/>-->
+
+        <!--</logger>-->
+        <Root level="info">
+            <AppenderRef ref="SYSOUT"/>
+            <AppenderRef ref="ErrorFile"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+    </Loggers>
+</Configuration>

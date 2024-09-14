@@ -1,14 +1,16 @@
-package com.example.selinuim.controller.home;
+package com.fjy.fxtools.controller;
 
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.fxml.FXML;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @apiNote  首页控制器
  * @author fangjy
  */
 @FXMLController
-public class HomeController {
+@Slf4j
+public class IndexController {
 
 
     /**
@@ -16,6 +18,7 @@ public class HomeController {
      */
     @FXML
     protected void handleOpen() {
+        log.error("dddd");
         System.out.println("打开文件...");
     }
 

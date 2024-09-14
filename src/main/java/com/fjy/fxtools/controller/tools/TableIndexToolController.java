@@ -1,4 +1,4 @@
-package com.example.selinuim.controller.home;
+package com.fjy.fxtools.controller.tools;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
  * @apiNote  首页控制器
  * @author fangjy
  */
-public class TableNameController {
+public class TableIndexToolController {
 
     @FXML
     private Label userRechargeTable;
