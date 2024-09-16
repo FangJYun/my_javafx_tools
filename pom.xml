@@ -89,22 +89,6 @@
           <jfxMainAppJarName>fjytools-1.0-SNAPSHOT.jar</jfxMainAppJarName>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>io.github.fvarrui</groupId>
-        <artifactId>javapackager</artifactId>
-        <version>1.7.6</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>package</goal>
-            </goals>
-            <configuration>
-              <mainClass>com.fjy.fxtools.HelloApplication</mainClass>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
   </build>
   <repositories>
@@ -127,4 +111,17 @@
       <url>https://jitpack.io</url>
     </repository>
   </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>public</id>
+      <name>aliyun nexus</name>
+      <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
 </project>
