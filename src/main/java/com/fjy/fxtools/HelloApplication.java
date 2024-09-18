@@ -1,6 +1,6 @@
 package com.fjy.fxtools;
 
-import com.fjy.fxtools.fxmlview.IndexView;
+import com.fjy.fxtools.fxmlview.IndexViewBean;
 import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;
 import de.felixroske.jfxsupport.SplashScreen;
 import javafx.stage.Stage;
@@ -22,7 +22,7 @@ public class HelloApplication extends AbstractJavaFxApplicationSupport {
                 return "/images/javafx.png";
             }
         };
-        launch(HelloApplication.class, IndexView.class, splashScreen, args);
+        launch(HelloApplication.class, IndexViewBean.class, splashScreen, args);
     }
 
     @Override

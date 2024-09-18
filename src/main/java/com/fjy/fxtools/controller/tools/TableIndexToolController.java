@@ -1,19 +1,16 @@
 package com.fjy.fxtools.controller.tools;
 
+import com.fjy.fxtools.view.tools.TableIndexToolView;
+import de.felixroske.jfxsupport.FXMLController;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
 /**
  * @apiNote  首页控制器
  * @author fangjy
  */
-public class TableIndexToolController {
+@FXMLController
+public class TableIndexToolController extends TableIndexToolView {
 
-    @FXML
-    private Label userRechargeTable;
-    @FXML
-    private TextField taxNumTextField;
 
     @FXML
     protected void onHelloButtonClick() {
