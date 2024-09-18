@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.Button?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-  fx:controller="com.fjy.fxtools.controller.tools.TableIndexToolController">
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.fjy.fxtools.controller.tools.TableIndexToolController">
   <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
-  <HBox xmlns:fx="http://javafx.com/fxml/1" spacing="10" alignment="CENTER">
-    <Label text="税号："/><TextField fx:id="taxNumTextField"/>
+  <GridPane>
+
+  </GridPane>
+  <HBox alignment="CENTER" spacing="10" xmlns:fx="http://javafx.com/fxml/1">
+    <Label text="分表键：" /><TextField fx:id="keyTextField" />
   </HBox>
-  <Label fx:id="userRechargeTable"/>
-  <Button text="确认" onAction="#onHelloButtonClick"/>
+  <HBox alignment="CENTER" spacing="10" xmlns:fx="http://javafx.com/fxml/1">
+    <Label text="分表键算法：" />
+    <RadioButton fx:id="hashCode" text="hashCode"/>
+  </HBox>
+  <HBox alignment="CENTER" spacing="10" xmlns:fx="http://javafx.com/fxml/1">
+    <Label text="分表数量：" /><TextField fx:id="countTextField" />
+  </HBox>
+  <Label fx:id="resultTable" />
+  <Button onAction="#confirmButtonClick" text="确认" />
 </VBox>
