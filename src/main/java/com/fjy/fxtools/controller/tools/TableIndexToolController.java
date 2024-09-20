@@ -19,9 +19,11 @@ public class TableIndexToolController extends TableIndexToolView {
         int count = Integer.parseInt(StringUtils.defaultString(countTextField.getText(), "1"));
         RadioButton selectRadio = (RadioButton)algorithmGroup.getSelectedToggle();
         int index = -1;
-        switch (selectRadio.getId()){
-            case "hashCode": index = (Math.abs(keyText.hashCode()) % count);break;
-            default:break;
+        if(selectRadio!=null){
+            switch (selectRadio.getId()){
+                case "hashCode": index = (Math.abs(keyText.hashCode()) % count);break;
+                default:break;
+            }
         }
         resultTable.setText("所在分表：table_"+ index);
     }
