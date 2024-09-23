@@ -13,8 +13,7 @@
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <columnConstraints>
-      <ColumnConstraints hgrow="NEVER" minWidth="100" />
-      <ColumnConstraints hgrow="ALWAYS" minWidth="100" />
+      <ColumnConstraints hgrow="NEVER" minWidth="100" maxWidth="200" />
     </columnConstraints>
     <!--第一行 -->
     <Label text="分表键：" GridPane.columnIndex="0" GridPane.rowIndex="0" />
