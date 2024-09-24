@@ -15,9 +15,9 @@
       </Menu>
       <Menu text="工具">
         <Menu text="自动化脚本">
-          <MenuItem text="页面处理测试"/>
+          <MenuItem fx:id="selinuimTestItemId" text="页面处理测试" onAction="#changeIndexView"/>
         </Menu>
-        <MenuItem fx:id="tableIndexItemId" text="查表索引" onAction="#changeTableIndexView"/>
+        <MenuItem fx:id="tableIndexItemId" text="查表索引" onAction="#changeIndexView"/>
       </Menu>
     </MenuBar>
   </top>

@@ -1,5 +1,6 @@
 package com.fjy.fxtools.enums;
 
+import com.fjy.fxtools.fxmlview.tools.SeleniumTestViewBean;
 import com.fjy.fxtools.fxmlview.tools.TableIndexViewBean;
 import de.felixroske.jfxsupport.AbstractFxmlView;
 import java.util.Arrays;
@@ -18,8 +19,10 @@ public enum IndexMenuPageEnum {
     /**
      * 菜单页面枚举
      */
-    TableIndexPageEnum("tableIndexItemId","查表索引", TableIndexViewBean.class);
+    TableIndexPageEnum("tableIndexItemId","查表索引", TableIndexViewBean.class),
 
+    SelinuimTestPageEnum("selinuimTestItemId","selinuim测试页面", SeleniumTestViewBean.class),
+    ;
     /**
      * 菜单id
      */

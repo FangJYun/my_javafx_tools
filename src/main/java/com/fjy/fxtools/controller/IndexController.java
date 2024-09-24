@@ -37,7 +37,7 @@ public class IndexController extends IndexView {
     }
 
     @FXML
-    public void changeTableIndexView(ActionEvent actionEvent) {
+    public void changeIndexView(ActionEvent actionEvent) {
         indexService.loadPage(mainPane,((MenuItem)actionEvent.getSource()).getId());
     }
 }

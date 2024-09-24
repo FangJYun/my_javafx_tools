@@ -17,4 +17,6 @@ public abstract class IndexView {
     protected BorderPane mainPane;
     @FXML
     protected MenuItem tableIndexItemId;
+    @FXML
+    protected MenuItem selinuimTestItemId;
 }
