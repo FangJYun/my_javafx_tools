@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Scope;
  * @author : fangjy
  */
 @Scope("prototype")
-@FXMLView(value = "/com/fjy/fxtools/tools/seleniumtest-view.fxml")
-public class SeleniumTestViewBean extends AbstractFxmlView {
+@FXMLView(value = "/com/fjy/fxtools/tools/bingscript-view.fxml")
+public class BingScriptViewBean extends AbstractFxmlView {
 
 }

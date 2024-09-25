@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Tooltip;
 import javafx.stage.Window;
 import javafx.util.Duration;
@@ -86,5 +87,15 @@ public class TooltipUtil {
         Platform.runLater(() -> {
             notificationBuilder.show();
         });
+    }
+
+
+    public static void boxTip(Alert.AlertType type,String message){
+        // 显示警告
+        Alert alert = new Alert(type);
+        alert.setTitle("输入错误");
+        //alert.setHeaderText("输入不完整");
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

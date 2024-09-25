@@ -81,7 +81,7 @@ public class SeleniumUtil {
      * @param by 页面元素
      */
     public static WebElement getWebElementByWait(Long seconds,By by){
-        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(seconds==null?10:seconds));
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(seconds==null?5:seconds));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 

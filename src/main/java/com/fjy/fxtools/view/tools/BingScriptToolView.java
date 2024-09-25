@@ -6,6 +6,7 @@ import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
@@ -18,7 +19,7 @@ import lombok.Data;
  * @date 2024-09-18 09:57
  **/
 @Data
-public abstract class SeleniumTestToolView implements Initializable {
+public abstract class BingScriptToolView implements Initializable {
 
     @FXML
     protected Label textValue;
@@ -26,6 +27,10 @@ public abstract class SeleniumTestToolView implements Initializable {
     public StackPane loadingPane;
     @FXML
     public ImageView loadingImage;
+    @FXML
+    public TextField accountTextField;
+    @FXML
+    public TextField passwdTextField;
     protected RotateTransition rotateTransition;
     @Override
     public void initialize(URL location, ResourceBundle resources) {

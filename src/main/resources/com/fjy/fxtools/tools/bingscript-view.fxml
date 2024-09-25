@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.fjy.fxtools.controller.tools.BingScriptToolController">
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+  <Label text="cn.bing.com自动登录脚本"/>
+  <StackPane fx:id="loadingPane">
+    <!-- 在这里添加动画元素，比如Circle -->
+    <ImageView fx:id="loadingImage" fitWidth="50" fitHeight="50" visible="false">
+      <Image url="@/images/loading.png"/>
+    </ImageView>
+  </StackPane>
+  <GridPane hgap="10" vgap="10" alignment="center">
+    <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <columnConstraints>
+      <ColumnConstraints hgrow="NEVER" minWidth="100" maxWidth="200" />
+    </columnConstraints>
+    <!--第一行 -->
+    <Label text="帐号：" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <TextField fx:id="accountTextField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+    <!--第二行 -->
+    <Label text="密码：" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TextField fx:id="passwdTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+  </GridPane>
+  <Label fx:id="textValue" />
+  <Button onAction="#confirmButtonClick" text="确认" />
+</VBox>

@@ -18,5 +18,5 @@ public abstract class IndexView {
     @FXML
     protected MenuItem tableIndexItemId;
     @FXML
-    protected MenuItem selinuimTestItemId;
+    protected MenuItem bingScriptItemId;
 }
