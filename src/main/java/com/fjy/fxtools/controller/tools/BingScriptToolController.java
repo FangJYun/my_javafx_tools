@@ -32,7 +32,7 @@ public class BingScriptToolController extends BingScriptToolView {
         loadingImage.setVisible(true);
         rotateTransition.play();
         threadPoolUtil.async(()->{
-            CreateDriverParam param = CreateDriverParam.builder().ifQuit(false).build();
+            CreateDriverParam param = CreateDriverParam.builder().ifBackRun(true).ifQuit(false).build();
             SeleniumUtil.doWebDriverTask(param,d->{
                 Platform.runLater(() -> {
                     loadingImage.setVisible(false);
