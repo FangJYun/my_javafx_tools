@@ -1,5 +1,6 @@
 package com.fjy.fxtools.controller.tools;
 
+import com.fjy.fxtools.module.CreateDriverParam;
 import com.fjy.fxtools.utils.SeleniumUtil;
 import com.fjy.fxtools.utils.TooltipUtil;
 import com.fjy.fxtools.utils.thread.ThreadPoolUtil;
@@ -31,7 +32,8 @@ public class BingScriptToolController extends BingScriptToolView {
         loadingImage.setVisible(true);
         rotateTransition.play();
         threadPoolUtil.async(()->{
-            SeleniumUtil.doWebDriverTask(null,false,d->{
+            CreateDriverParam param = CreateDriverParam.builder().ifQuit(false).build();
+            SeleniumUtil.doWebDriverTask(param,d->{
                 Platform.runLater(() -> {
                     loadingImage.setVisible(false);
                     rotateTransition.stop();

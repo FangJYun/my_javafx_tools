@@ -1,6 +1,7 @@
 package com.fjy.fxtools.utils;
 
 import com.fjy.fxtools.enums.BrowserDriverEnum;
+import com.fjy.fxtools.module.CreateDriverParam;
 import java.time.Duration;
 import java.util.function.Consumer;
 import lombok.Data;
@@ -9,7 +10,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.AbstractDriverOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -32,16 +36,34 @@ public class SeleniumUtil {
     /**
      * 创建新的驱动
      */
-    public static WebDriver createWebDriver(BrowserDriverEnum driverEnum){
-        if (BrowserDriverEnum.chrome == driverEnum){
-            webDriver = new ChromeDriver();
+    public static WebDriver createWebDriver(CreateDriverParam param){
+        if (BrowserDriverEnum.chrome == param.getDriverEnum()){
+            webDriver = new ChromeDriver((ChromeOptions)getDriverOptions(param));
         }
-        else if (BrowserDriverEnum.firefox == driverEnum){
-            webDriver = new FirefoxDriver();
+        else if (BrowserDriverEnum.firefox == param.getDriverEnum()){
+            webDriver = new FirefoxDriver((FirefoxOptions)getDriverOptions(param));
         }else {
-            webDriver = new ChromeDriver();
+            webDriver = new ChromeDriver((ChromeOptions)getDriverOptions(param));
         }
         return webDriver;
+    }
+
+    public static AbstractDriverOptions<?> getDriverOptions(CreateDriverParam param){
+        if (param.getDriverEnum()==null || BrowserDriverEnum.chrome == param.getDriverEnum()){
+            ChromeOptions chromeOptions = new ChromeOptions();
+            if (param.getIfBackRun()){
+                chromeOptions.addArguments("--headless");
+            }
+            return chromeOptions;
+        }
+        if (BrowserDriverEnum.firefox == param.getDriverEnum()){
+            FirefoxOptions firefoxOptions = new FirefoxOptions();
+            if (param.getIfBackRun()){
+                firefoxOptions.addArguments("--headless");
+            }
+            return firefoxOptions;
+        }
+        return new ChromeOptions();
     }
 
     /**
@@ -61,15 +83,15 @@ public class SeleniumUtil {
     /**
      * 执行浏览器操作
      */
-    public static void doWebDriverTask(BrowserDriverEnum driverEnum,Boolean ifQuit, Consumer<WebDriver> consumer){
+    public static void doWebDriverTask(CreateDriverParam param, Consumer<WebDriver> consumer){
         WebDriver driver;
         try {
-            driver = SeleniumUtil.createWebDriver(driverEnum);
+            driver = SeleniumUtil.createWebDriver(param);
             consumer.accept(driver);
         } catch (Exception e) {
             log.error("处理selenium脚本异常",e);
         }finally {
-            if (ifQuit==null || ifQuit){
+            if (param.getIfQuit()){
                 SeleniumUtil.quitWebDriver();
             }
         }
